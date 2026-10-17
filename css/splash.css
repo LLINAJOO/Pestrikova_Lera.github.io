@@ -1,0 +1,101 @@
+/**
+ * Экран приветствия: звезда, «// привет» печатается,
+ * затем экран уезжает вверх волной и открывает сайт.
+ */
+
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+/* Панель с градиентом; снизу к ней приклеена волна */
+.splash__panel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(165deg, var(--w2), var(--w3) 55%, var(--w4));
+  transition: transform 1s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.splash__wave {
+  position: absolute;
+  left: 0;
+  top: calc(100% - 1px);
+  width: 100%;
+  height: 120px;
+  fill: var(--w4);
+}
+
+.splash__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  color: #fff;
+}
+
+.splash__star {
+  width: 96px;
+  height: 96px;
+  fill: #fff;
+  filter: drop-shadow(0 10px 30px rgba(10, 40, 100, 0.35));
+  animation: splash-star-in 0.9s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+@keyframes splash-star-in {
+  from {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+}
+
+.splash__text {
+  min-height: 1.4em;
+  font-family: var(--mono);
+  font-size: clamp(22px, 4vw, 34px);
+  letter-spacing: 0.02em;
+}
+.splash__caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 4px;
+  vertical-align: -0.15em;
+  background: #fff;
+  animation: splash-caret 0.9s steps(2) infinite;
+}
+@keyframes splash-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+.splash__skip {
+  position: absolute;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  translate: -50% 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Уход: звезда крутится, панель уезжает вверх вместе с волной */
+.splash.is-leaving .splash__star {
+  transform: rotate(360deg) scale(0.6);
+  opacity: 0;
+  transition:
+    transform 0.7s ease-in,
+    opacity 0.5s 0.2s;
+}
+.splash.is-leaving .splash__panel {
+  transform: translateY(calc(-100% - 130px));
+}
+
+/* Пока висит приветствие, анимации первого экрана ждут */
+.splash-active .intro {
+  animation-play-state: paused;
+}
+.splash-active body {
+  overflow: hidden;
+}

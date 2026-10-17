@@ -1,0 +1,289 @@
+/**
+ * Анимации и декоративные эффекты.
+ * Всё, что двигается, собрано здесь. Чтобы отключить эффект,
+ * удалите его блок (и соответствующую функцию в js/effects.js).
+ * Для людей, у которых в системе включено «Уменьшить движение»,
+ * анимации выключаются в самом конце файла.
+ */
+
+/* ==========================================================================
+   1. Появление первого экрана
+   Элементы с классом .intro по очереди всплывают при загрузке.
+   Задержка задаётся в разметке: style="--d: 0", "--d: 1"…
+   ========================================================================== */
+.intro {
+  animation: intro-up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(0.12s + var(--d, 0) * 0.12s);
+}
+@keyframes intro-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(6px);
+  }
+}
+
+/* Строки имени — блочные, иначе transform на них не действует */
+.hero h1 .intro {
+  display: block;
+}
+
+/* Окно «Об этом разработчике» открывается, как окно macOS */
+.intro--window {
+  animation-name: window-open;
+  animation-duration: 1s;
+  transform-origin: 50% 80%;
+}
+@keyframes window-open {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) translateY(40px) scale(0.9) rotateX(8deg);
+    filter: blur(10px);
+  }
+}
+
+/* ==========================================================================
+   2. Звезда рядом с именем
+   ========================================================================== */
+.star {
+  display: inline-block;
+  width: 0.42em;
+  height: 0.42em;
+  margin-left: 0.06em;
+  vertical-align: 0.42em;
+  fill: #669eff;
+  filter: drop-shadow(0 4px 10px rgba(102, 158, 255, 0.45));
+  animation: star-spin 18s linear infinite;
+}
+.hero h1:hover .star {
+  animation-duration: 3s;
+}
+@keyframes star-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   3. Переливающаяся рамка вокруг фото
+   ========================================================================== */
+@property --ring-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.avatar {
+  position: relative;
+  overflow: visible;
+  background: none;
+}
+.avatar img {
+  position: relative;
+  z-index: 1;
+  border-radius: inherit;
+}
+.avatar__ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--ring-angle), #669eff, #9fd0ff, #2a6fd8, #b9a6ff, #669eff);
+  animation: ring-turn 6s linear infinite;
+}
+.avatar__ring::after {
+  /* тонкий зазор между рамкой и фото */
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  background: var(--glass-solid);
+}
+@keyframes ring-turn {
+  to {
+    --ring-angle: 360deg;
+  }
+}
+
+/* ==========================================================================
+   4. Блик на стеклянных окнах — следует за курсором
+   Координаты --mx / --my выставляет js/effects.js
+   ========================================================================== */
+.win::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(255, 255, 255, 0.16),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.win:hover::after {
+  opacity: 1;
+}
+.term-win::after,
+.modal::after {
+  display: none;
+}
+
+/* ==========================================================================
+   5. Карточки проектов слегка наклоняются за курсором
+   Углы --rx / --ry выставляет js/effects.js
+   ========================================================================== */
+.card-item {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition:
+    transform 0.25s ease-out,
+    box-shadow 0.2s;
+}
+.card-item:hover {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))
+    translateY(-4px);
+}
+
+/* Пульсирующая точка у статуса «Работает» */
+.status i {
+  position: relative;
+}
+.status[style*="#28c840"] i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+  animation: status-ping 2s ease-out infinite;
+}
+@keyframes status-ping {
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   6. Заголовки секций: заголовок выезжает, комментарий «печатается»
+   Класс .is-visible добавляет js/effects.js, когда секция появляется на экране
+   ========================================================================== */
+.js-reveal [data-reveal] h2 {
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(30%);
+  transition:
+    clip-path 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.js-reveal [data-reveal].is-visible h2 {
+  clip-path: inset(-10% -5% -20% 0);
+  transform: none;
+}
+.comment {
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.comment .caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: -0.2em;
+  background: var(--accent);
+  animation: caret-blink 1s steps(2) infinite;
+}
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   7. Кнопки: мягкий блик при наведении
+   ========================================================================== */
+.btn.primary,
+.pbtn:not(.alt):not(.pbtn--disabled) {
+  position: relative;
+  overflow: hidden;
+}
+.btn.primary::after,
+.pbtn:not(.alt):not(.pbtn--disabled)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.btn.primary:hover::after,
+.pbtn:not(.alt):not(.pbtn--disabled):hover::after {
+  transform: translateX(120%);
+}
+
+/* Теги навыков приподнимаются */
+.skills span {
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+.skills span:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+/* ==========================================================================
+   8. Док: иконка подпрыгивает при нажатии, как запуск приложения в macOS
+   ========================================================================== */
+.dk.is-bouncing .ficon {
+  animation: dock-bounce 0.6s cubic-bezier(0.3, 0, 0.3, 1);
+}
+@keyframes dock-bounce {
+  35% {
+    transform: translateY(-14px);
+  }
+  65% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ==========================================================================
+   9. Волны на фоне медленно смещаются при прокрутке (параллакс)
+   Значение --scroll выставляет js/effects.js
+   ========================================================================== */
+.wall .l1 {
+  translate: 0 calc(var(--scroll, 0) * -0.03px);
+}
+.wall .l2 {
+  translate: 0 calc(var(--scroll, 0) * -0.06px);
+}
+.wall .l3 {
+  translate: 0 calc(var(--scroll, 0) * -0.09px);
+}
+
+/* ==========================================================================
+   Уменьшение движения: выключаем всё, что двигается
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .intro,
+  .intro--window,
+  .star,
+  .avatar__ring,
+  .status i::after,
+  .comment .caret {
+    animation: none !important;
+  }
+  .js-reveal [data-reveal] h2 {
+    clip-path: none;
+    transform: none;
+  }
+  .card-item {
+    transform: none !important;
+  }
+  .wall path {
+    translate: none !important;
+  }
+}

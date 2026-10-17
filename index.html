@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Пестрикова Валерия</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <meta name="description" content="Валерия Пестрикова — программист и веб-дизайнер. Проекты, достижения и контакты." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/effects.css" />
+    <link rel="stylesheet" href="css/splash.css" />
+  </head>
+  <body>
+<!-- Экран приветствия -->
+<div class="splash" id="splash" hidden>
+  <div class="splash__panel">
+    <div class="splash__content">
+      <svg class="splash__star" viewBox="0 0 64 64" aria-hidden="true"><polygon points="63.0,32.0 46.1,27.4 57.1,13.8 40.7,20.0 41.6,2.5 32.0,17.2 22.4,2.5 23.3,20.0 6.9,13.8 17.9,27.4 1.0,32.0 17.9,36.6 6.9,50.2 23.3,44.0 22.4,61.5 32.0,46.8 41.6,61.5 40.7,44.0 57.1,50.2 46.1,36.6"/></svg>
+      <div class="splash__text" aria-label="Привет"></div>
+    </div>
+    <span class="splash__skip">нажмите, чтобы пропустить</span>
+    <svg class="splash__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V40 C1200 110 960 20 720 70 S240 120 0 50 Z"/></svg>
+  </div>
+</div>
+<script src="js/splash.js"></script>
+<!-- Фон: слои волн -->
+    <div class="wall" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" style="stop-color: var(--w1)" />
+            <stop offset="1" style="stop-color: var(--w2)" />
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" style="stop-color: var(--w2)" />
+            <stop offset=".6" style="stop-color: var(--w3)" />
+            <stop offset="1" style="stop-color: var(--w4)" />
+          </linearGradient>
+          <linearGradient id="g3" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" style="stop-color: var(--w3)" />
+            <stop offset="1" style="stop-color: var(--w4)" />
+          </linearGradient>
+          <linearGradient id="hl" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" style="stop-color: var(--w4); stop-opacity: 0" />
+            <stop offset=".5" style="stop-color: var(--w4); stop-opacity: 0.9" />
+            <stop offset="1" style="stop-color: var(--w4); stop-opacity: 0" />
+          </linearGradient>
+        </defs>
+        <rect width="1440" height="900" style="fill: var(--w0)" />
+        <path
+          class="l1"
+          d="M-100 420 C 200 300, 420 560, 760 430 S 1300 260, 1560 360 L1560 1000 L-100 1000 Z"
+          fill="url(#g1)"
+        />
+        <path
+          class="l2"
+          d="M-100 560 C 260 470, 520 700, 860 590 S 1340 430, 1560 520 L1560 1000 L-100 1000 Z"
+          fill="url(#g2)"
+          opacity=".85"
+        />
+        <path
+          class="l2"
+          d="M-100 560 C 260 470, 520 700, 860 590 S 1340 430, 1560 520"
+          fill="none"
+          stroke="url(#hl)"
+          stroke-width="2"
+        />
+        <path
+          class="l3"
+          d="M-100 720 C 300 640, 600 820, 980 730 S 1380 640, 1560 690 L1560 1000 L-100 1000 Z"
+          fill="url(#g3)"
+          opacity=".9"
+        />
+        <path
+          class="l3"
+          d="M-100 720 C 300 640, 600 820, 980 730 S 1380 640, 1560 690"
+          fill="none"
+          stroke="url(#hl)"
+          stroke-width="1.5"
+        />
+      </svg>
+    </div>
+
+    <!-- Верхняя панель -->
+    <header class="menubar">
+      <a class="logo" href="#top"><b>ВП</b>Портфолио</a>
+      <div class="r">
+        <button class="mbtn" id="themeBtn" aria-label="Сменить тему">
+          <svg
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+          </svg>
+        </button>
+        <span class="clock" id="clock"></span>
+        <a class="cta-sm" href="#contact">Написать</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Первый экран -->
+      <div class="wrap hero">
+        <div>
+          <h1>
+            <span class="intro" style="--d: 0">Валерия <svg class="star" viewBox="0 0 64 64" aria-hidden="true"><polygon points="63.0,32.0 46.1,27.4 57.1,13.8 40.7,20.0 41.6,2.5 32.0,17.2 22.4,2.5 23.3,20.0 6.9,13.8 17.9,27.4 1.0,32.0 17.9,36.6 6.9,50.2 23.3,44.0 22.4,61.5 32.0,46.8 41.6,61.5 40.7,44.0 57.1,50.2 46.1,36.6"/></svg></span>
+            <span class="light intro" style="--d: 1">Пестрикова</span>
+          </h1>
+          <p class="lead intro" style="--d: 2">Программист и веб-дизайнер.</p>
+          <div class="btns intro" style="--d: 3">
+            <a class="btn primary" href="#projects">Смотреть проекты</a>
+            <a class="btn glass" href="#contact">Связаться</a>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="win about-win intro intro--window" style="--d: 2">
+            <div class="titlebar">
+              <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+              <span class="title">Об этом разработчике</span>
+            </div>
+            <div class="about">
+              <div class="avatar"><span class="avatar__ring" aria-hidden="true"></span><img src="img/photo.jpg" alt="Валерия Пестрикова" /></div>
+              <dl class="spec">
+                <dt>Учёба</dt>
+                <dd>ННГАСУ, бакалавриат</dd>
+                <dt>Направление</dt>
+                <dd>Информационные системы и технологии</dd>
+              </dl>
+              <div class="skills">
+                <span>Frontend</span><span>Backend</span><span>UI / UX</span><span>Веб-дизайн</span
+                ><span>Базы данных</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Проекты: содержимое окна рисует js/main.js из js/data.js -->
+      <section id="projects">
+        <div class="wrap">
+          <div class="sec-head" data-reveal>
+            <h2>Проекты</h2>
+            <p class="comment">
+              // Мои проекты. Нажмите на проект, чтобы открыть подробное
+              описание.
+            </p>
+          </div>
+          <div class="win rv">
+            <div class="titlebar">
+              <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+              <span class="title">Проекты</span>
+            </div>
+            <div class="finder">
+              <nav class="side" id="projSide" aria-label="Фильтр проектов"></nav>
+              <div class="grid grid--cards" id="projGrid"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Достижения: содержимое окна рисует js/main.js из js/data.js -->
+      <section id="awards">
+        <div class="wrap">
+          <div class="sec-head" data-reveal>
+            <h2>Достижения</h2>
+            <p class="comment">// Дипломы, сертификаты и конференции. Нажмите на документ, чтобы рассмотреть его.</p>
+          </div>
+          <div class="win rv">
+            <div class="titlebar">
+              <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+              <span class="title">Достижения</span>
+            </div>
+            <div class="finder">
+              <nav class="side" id="awSide" aria-label="Разделы достижений"></nav>
+              <div class="grid grid--docs" id="awGrid"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Контакты -->
+      <section id="contact">
+        <div class="wrap">
+          <div class="sec-head" data-reveal>
+            <h2>Связь</h2>
+            <p class="comment">
+              // Про проект, дизайн, стажировку или совместную работу. В Telegram отвечаю быстрее
+              всего.
+            </p>
+          </div>
+          <div class="win rv">
+            <div class="titlebar">
+              <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+              <span class="title">Связь</span>
+            </div>
+            <div class="contact-grid">
+              <div class="card">
+                <span class="ficon" style="background: linear-gradient(160deg, #4fc3f7, #1e88e5)"
+                  ><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.2-8.3c.4-.4-.1-.6-.6-.2L6.1 13 1.3 11.5c-1-.3-1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"
+                    /></svg
+                ></span>
+                <span class="t"><small>Telegram</small><b>@llinajoo</b></span>
+                <a class="pbtn" href="https://t.me/llinajoo" target="_blank" rel="noopener"
+                  >Написать</a
+                >
+              </div>
+              <div class="card">
+                <span class="ficon" style="background: linear-gradient(160deg, #ff8a65, #f4511e)"
+                  ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="4" width="20" height="16" rx="3" />
+                    <path d="m3 6 9 7 9-7" /></svg
+                ></span>
+                <span class="t"
+                  ><small>Почта</small
+                  ><b id="mail" class="selectable">valeri7915@gmail.com</b></span
+                >
+                <button class="pbtn alt" id="copyMail">Копировать</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2026 Валерия Пестрикова</footer>
+
+    <!-- Окно проекта: открывается по клику на проект -->
+    <div class="overlay" id="projectModal" hidden>
+      <div class="win modal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+        <div class="titlebar">
+          <div class="lights">
+            <button class="light-close" data-close aria-label="Закрыть окно"></button><i></i><i></i>
+          </div>
+          <span class="title" id="projectModalBar"></span>
+        </div>
+        <div class="modal-body" id="projectModalBody"></div>
+      </div>
+    </div>
+
+    <!-- Просмотр документа (как «Быстрый просмотр» в macOS) -->
+    <div class="overlay" id="viewer" hidden>
+      <div
+        class="win modal modal--viewer"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="viewerTitle"
+      >
+        <div class="titlebar">
+          <div class="lights">
+            <button class="light-close" data-close aria-label="Закрыть просмотр"></button><i></i
+            ><i></i>
+          </div>
+          <span class="title" id="viewerTitle"></span>
+        </div>
+        <div class="viewer-stage" id="viewerStage">
+          <button
+            class="viewer-nav viewer-nav--prev"
+            id="viewerPrev"
+            aria-label="Предыдущий документ"
+          >
+            ‹
+          </button>
+          <img id="viewerImage" alt="" />
+          <button
+            class="viewer-nav viewer-nav--next"
+            id="viewerNext"
+            aria-label="Следующий документ"
+          >
+            ›
+          </button>
+        </div>
+        <div class="viewer-caption">
+          <div>
+            <b id="viewerName"></b>
+            <span id="viewerMeta"></span>
+          </div>
+          <span class="viewer-hint"
+            >Нажмите на документ, чтобы увеличить · ← → листать · Esc закрыть</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Док-навигация: пункты задаются в js/main.js (NAV_ITEMS) -->
+    <div class="dock-wrap"><nav class="dock" id="dock" aria-label="Разделы сайта"></nav></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/icons.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/effects.js"></script>
+
+</body></html>
