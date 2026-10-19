@@ -2,6 +2,8 @@
  * Набор SVG-иконок. Цвет берётся из currentColor.
  */
 const ICONS = {
+  lighthouse:
+    '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="9.5" y="2.5" width="5" height="3.5" rx="1"/><path d="M10 7h4l1.6 13H8.4z"/><path d="M8.5 3.6 3 2.5v3.3l5.5-.9zM15.5 3.6 21 2.5v3.3l-5.5-.9z" opacity=".65"/><rect x="6.5" y="20" width="11" height="2" rx="1"/></svg>',
   home: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c.8-4.6 4.2-7 8.5-7s7.7 2.4 8.5 7z"/></svg>',
   folder:
     '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h5l2 2h8A2.5 2.5 0 0 1 22 8.5v9a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 17.5z"/></svg>',
