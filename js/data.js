@@ -152,7 +152,7 @@ const ACHIEVEMENTS = [
       "ITGorky: Большая встреча IT-сообществ Нижнего Новгорода",
     org: "ITGorky, Нижний овгород",
     date: "17.10.2026",
-    folders: ["Шоукейсы"],
+    folders: ["Другое"],
     image: "img/awards/itgorky-showcase.jpg",
     thumb: "img/awards/itgorky-showcase-thumb.jpg",
   },
