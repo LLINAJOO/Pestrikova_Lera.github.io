@@ -263,7 +263,7 @@ const AWARD_FOLDERS = [
   { name: "Дипломы", icon: "cap" },
   { name: "Сертификаты", icon: "cert" },
   { name: "Конференции", icon: "mic" },
-  { name: "Другие мероприятия", icon: "screen" },
+  { name: "Другое", icon: "screen" },
 ];
 
 let awardFolder = "Все";
