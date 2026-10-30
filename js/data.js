@@ -25,8 +25,8 @@ const PROJECTS = [
     id: "lighthouse",
     name: "Light House",
     status: "live",
-    url: "https://llinajoo.github.io/lighthouse.github.io/",
-    domain: "llinajoo.github.io/lighthouse.github.io",
+    url: "https://llinajoo.github.io/lighthouse/",
+    domain: "llinajoo.github.io/lighthouse",
     summary: "Уютная пиксельная игра о последней неделе смотрителя маяка.",
     about: [
       "Light House — браузерная пиксельная игра. Герой — смотритель маяка, и у него последняя неделя на острове перед возвращением домой. Каждый день — новый список дел: почистить линзу, принести дрова, зажечь огонь к вечеру и сделать запись в журнале.",
