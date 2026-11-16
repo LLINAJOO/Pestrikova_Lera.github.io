@@ -156,6 +156,17 @@ const ACHIEVEMENTS = [
     image: "img/awards/itgorky-showcase.jpg",
     thumb: "img/awards/itgorky-showcase-thumb.jpg",
   },
+  {
+    id: "scienceconf",
+    title: "Участие в Нижегородском фестивале науки",
+    event:
+      "Нижегородский фестиваль науки 2026",
+    org: "Министерство науки и высшего образования Нижегоросдкой обл., ННГАСУ, Нижний Новгород",
+    date: "28.10.2026",
+    folders: ["Сертификаты"],
+    image: "img/awards/scienceconf.pdf",
+    thumb: "img/awards/scienceconf.pdf",
+  },
 ];
 
 /** Контакты */
