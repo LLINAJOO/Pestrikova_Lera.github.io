@@ -146,7 +146,7 @@ const ACHIEVEMENTS = [
     thumb: "img/awards/linux-conference-thumb.jpg",
   },
   {
-    id: "linux-conference",
+    id: "showcase",
     title: "Шоукейс на большой встрече IT-сообществ Нижнего Новгорода",
     event:
       "ITGorky: Большая встреча IT-сообществ Нижнего Новгорода",
