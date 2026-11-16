@@ -64,7 +64,7 @@ const PROJECTS = [
       "Личный кабинет игрока",
     ],
     role: "Дизайн сайта, разработка",
-    image: "img/gamecode.jpg",
+    image: "img/gamecode.png",
     color: "linear-gradient(160deg, #5b8cff, #2a4fd6)",
     icon: "code",
   },
