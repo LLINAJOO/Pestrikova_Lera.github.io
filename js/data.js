@@ -157,15 +157,15 @@ const ACHIEVEMENTS = [
     thumb: "img/awards/itgorky-showcase-thumb.jpg",
   },
   {
-    id: "scienceconf",
+    id: "Scienceconf",
     title: "Участие в Нижегородском фестивале науки",
     event:
       "Нижегородский фестиваль науки 2026",
     org: "Министерство науки и высшего образования Нижегоросдкой обл., ННГАСУ, Нижний Новгород",
     date: "28.10.2026",
     folders: ["Сертификаты"],
-    image: "img/awards/scienceconf.pdf",
-    thumb: "img/awards/scienceconf.pdf",
+    image: "img/awards/Scienceconf.jpg",
+    thumb: "img/awards/Scienceconf.jpg",
   },
 ];
 
